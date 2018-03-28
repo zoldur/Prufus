@@ -25,6 +25,7 @@ function compile_node() {
   echo -e "Prepare to compile $COIN_NAME"
   git clone $COIN_REPO $TMP_FOLDER >/dev/null 2>&1
   compile_error
+  cd $TMP_FOLDER
   chmod +x ./autogen.sh 
   chmod +x ./share/genbuild.sh
   chmod +x ./src/leveldb/build_detect_platform
@@ -291,12 +292,11 @@ clear
 
 checks
 prepare_system
-ask_permission
-if [[ "$ZOLDUR" == "YES" ]]; then
-  download_node
-else
+#ask_permission
+#if [[ "$ZOLDUR" == "YES" ]]; then
+#  download_node
+#else
   create_swap
   compile_node
-fi
+#fi
 setup_node
-
